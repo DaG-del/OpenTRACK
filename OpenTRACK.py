@@ -1,3 +1,4 @@
-f = open("track.csv", "r")
+f = open("track.txt", "r")
 
-print(f.readlines())
+ip = f.readlines()
+
