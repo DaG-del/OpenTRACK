@@ -1,7 +1,52 @@
 import math
 
-_KAPPA = 10
 
+def center_points(l):
+    sum = 0
+    cumulative = []
+    for el in l:
+        sum += el
+        cumulative.append(sum - el/2)
+
+    return cumulative
+
+
+def end_points(l):
+    sum = 0
+    cumulative = []
+    for el in l:
+        sum += el
+        cumulative.append(sum)
+
+    return cumulative
+
+
+def nos(R):
+    n = 0
+    for r in R:
+        if r == float("inf"):
+            n += 1
+
+    return n
+
+
+def fine(total_length):
+    tl = total_length
+    total_length = math.ceil(total_length)
+    x_fine = []
+    sum = 0
+    while True:
+        sum += _mesh_size
+        x_fine.append(sum)
+
+        if x_fine[-1] > tl:
+            x_fine.pop()
+            x_fine[-1] = tl
+            return x_fine
+
+
+_KAPPA = 10
+_mesh_size = 0.1
 f = open("track.txt", "r")
 track = []
 ip = f.readlines()
@@ -19,7 +64,7 @@ for r in range(len(R)):
         R[r] = float("inf")
 
 l = [float(t[1]) for t in track]
-type = [int(t[0]) for t in track]
+type = [-int(t[0]) for t in track]
 total_length = sum(l)
 
 track = [(type[i], l[i], R[i]) for i in range(len(track))]
@@ -72,4 +117,25 @@ for tbr in to_be_removed:
     R.pop(tbr)
     l.pop(tbr)
     type.pop(tbr)
+
+segment_end_point = end_points(l)
+
+segment_center_point = center_points(l)
+
+no_of_straights = nos(R)
+x_coarse = [0] * (len(segment_end_point) + no_of_straights)
+r = [0] * len(x_coarse)
+
+j = 0
+for i in range(len(segment_center_point)):
+    if R[i] == float("inf"):
+        x_coarse[j] = segment_end_point[i] - l[i]
+        x_coarse[j + 1] = segment_end_point[i]
+        j += 2
+    else:
+        x_coarse[j] = segment_center_point[i]
+        r[j] = type[i]/R[i]
+        j += 1
+
+x_fine = fine(total_length)
 
