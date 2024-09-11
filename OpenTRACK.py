@@ -171,6 +171,8 @@ for i in range(len(segment_center_point)):
         r[j] = type[i]/R[i]
         j += 1
 
+
+
 x = fine(total_length)
 
 distance_step_vector = numpy.diff(x)
