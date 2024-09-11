@@ -150,22 +150,6 @@ while el < temp:
         temp -= 1
     el += 1
 
-f = open("l.csv", "r")
-f = f.readlines()
-l_MATLAB = []
-for ef in f:
-    l_MATLAB.append(float(ef.strip()))
-
-for el in range(len(l)):
-    if round(l_MATLAB[el] * 100)/100 != round(l[el] * 100)/100:
-        print(el)
-
-print(l[143])
-print(l_MATLAB[143])
-
-print(l[222:224])
-print(l_MATLAB[222:224])
-
 
 segment_end_point = end_points(l)
 
@@ -194,7 +178,7 @@ distance_step_vector = distance_step_vector.tolist()
 distance_step_vector.append(distance_step_vector[-1])
 number_of_mesh_points = len(x)
 
-d = scipy.diff(x_coarse)
+d = numpy.diff(x_coarse)
 
 i = 0
 for dee in d:
@@ -202,6 +186,20 @@ for dee in d:
         print(i)
     i += 1
 
-print(x_coarse[245:300])
 
 r = scipy.interpolate.pchip_interpolate(x_coarse, r, x)
+r = r.tolist()
+
+print(r[25])
+
+f = open("r.csv", "r")
+f = f.readlines()
+r_MATLAB = []
+for ef in f:
+    r_MATLAB.append(float(ef.strip()))
+
+print(r_MATLAB[25])
+
+for el in range(len(r)):
+    if round(r_MATLAB[el] * 100)/100 != round(r[el] * 100)/100:
+        print("",end="")
