@@ -34,7 +34,6 @@ def nos(R):
 
 def fine(total_length):
     tl = total_length
-    total_length = math.ceil(total_length)
     x_fine = []
     sum = 0
     while True:
@@ -138,8 +137,6 @@ for i in range(len(l) - 1):
             break
         j += 1
 
-print(l.count(-1))
-
 temp = len(l) - 1
 el = 0
 while el < temp:
@@ -171,8 +168,6 @@ for i in range(len(segment_center_point)):
         r[j] = type[i]/R[i]
         j += 1
 
-
-
 x = fine(total_length)
 
 distance_step_vector = numpy.diff(x)
@@ -191,17 +186,3 @@ for dee in d:
 
 r = scipy.interpolate.pchip_interpolate(x_coarse, r, x)
 r = r.tolist()
-
-print(r[25])
-
-f = open("r.csv", "r")
-f = f.readlines()
-r_MATLAB = []
-for ef in f:
-    r_MATLAB.append(float(ef.strip()))
-
-print(r_MATLAB[25])
-
-for el in range(len(r)):
-    if round(r_MATLAB[el] * 100)/100 != round(r[el] * 100)/100:
-        print("",end="")
