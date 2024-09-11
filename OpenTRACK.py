@@ -122,6 +122,23 @@ for tbr in to_be_removed:
     l.pop(tbr)
     type.pop(tbr)
 
+f = open("l.csv", "r")
+f = f.readlines()
+l_MATLAB = []
+for ef in f:
+    l_MATLAB.append(float(ef.strip()))
+
+for el in range(len(l)):
+    if round(l_MATLAB[el] * 100)/100 != round(l[el] * 100)/100:
+        print(el)
+
+print(l[143])
+print(l_MATLAB[143])
+
+print(l[222:224])
+print(l_MATLAB[222:224])
+
+
 segment_end_point = end_points(l)
 
 segment_center_point = center_points(l)
@@ -129,6 +146,7 @@ segment_center_point = center_points(l)
 no_of_straights = nos(R)
 x_coarse = [0] * (len(segment_end_point) + no_of_straights)
 r = [0] * len(x_coarse)
+
 
 j = 0
 for i in range(len(segment_center_point)):
@@ -148,6 +166,15 @@ distance_step_vector = distance_step_vector.tolist()
 distance_step_vector.append(distance_step_vector[-1])
 number_of_mesh_points = len(x)
 
+d = scipy.diff(x_coarse)
+
+i = 0
+for dee in d:
+    if dee == 0:
+        print(i)
+    i += 1
+
+print(x_coarse[245:300])
 
 r = scipy.interpolate.pchip_interpolate(x_coarse, r, x)
 print(r)
