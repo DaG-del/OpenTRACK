@@ -110,17 +110,45 @@ R = R_injected
 l = l_injected
 type = type_injected
 
-to_be_removed = []
+'''
+for i=1:length(l)-1
+    j = 1 ;
+    while true
+        if type(i+j)==0 && type(i)==0 && l(i)~=-1
+            l(i) = l(i)+l(i+j) ;
+            l(i+j) = -1 ;
+        else
+            break
+        end
+        j = j+1 ;
+    end
+end
+R(l==-1) = [] ;
+type(l==-1) = [] ;
+l(l==-1) = [] ;
+'''
 
 for i in range(len(l) - 1):
-    if type[i] == 0 and type[i + 1] == 0:
-        l[i + 1] = l[i] + l[i + 1]
-        to_be_removed.append(i)
+    j = 1
+    while True:
+        if type[i + j] == 0 and type[i] == 0 and l[i] != -1:
+            l[i] = l[i + j] + l[i]
+            l[i + j] = -1
+        else:
+            break
+        j += 1
 
-for tbr in to_be_removed:
-    R.pop(tbr)
-    l.pop(tbr)
-    type.pop(tbr)
+print(l.count(-1))
+
+temp = len(l) - 1
+el = 0
+while el < temp:
+    if l[el] == -1:
+        l.pop(el)
+        R.pop(el)
+        type.pop(el)
+        temp -= 1
+    el += 1
 
 f = open("l.csv", "r")
 f = f.readlines()
@@ -177,4 +205,3 @@ for dee in d:
 print(x_coarse[245:300])
 
 r = scipy.interpolate.pchip_interpolate(x_coarse, r, x)
-print(r)

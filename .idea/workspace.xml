@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81ed5ddf-49cf-4477-bdf2-372757578234" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/R.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/X.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/l.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenTRACK.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTRACK.py" afterDir="false" />
     </list>
@@ -150,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726059754907</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="update">
+      <option name="closed" value="true" />
+      <created>1726066027854</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1726066027854</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -165,22 +170,23 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/OpenTRACK.py</url>
           <line>171</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/OpenTRACK.py</url>
-          <line>170</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/OpenTRACK.py</url>
-          <line>135</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/OpenTRACK.py</url>
-          <line>121</line>
-          <option name="timeStamp" value="16" />
+          <line>169</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/OpenTRACK.py</url>
+          <line>152</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <condition expression="el == 319" language="Python" />
+          <url>file://$PROJECT_DIR$/OpenTRACK.py</url>
+          <line>145</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
