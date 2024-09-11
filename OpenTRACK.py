@@ -45,6 +45,14 @@ def fine(total_length):
             return x_fine
 
 
+def diff(x):
+    diff = []
+    for i in range(len(x) - 1):
+        diff.append(x[i + 1] - x[i])
+
+    return diff
+
+
 _KAPPA = 10
 _mesh_size = 0.1
 f = open("track.txt", "r")
@@ -137,5 +145,8 @@ for i in range(len(segment_center_point)):
         r[j] = type[i]/R[i]
         j += 1
 
-x_fine = fine(total_length)
+x = fine(total_length)
+
+distance_step_vector = diff(x)
+distance_step_vector.append(distance_step_vector[-1])
 
