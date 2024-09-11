@@ -1,4 +1,6 @@
+import scipy
 import math
+import numpy
 
 
 def center_points(l):
@@ -43,14 +45,6 @@ def fine(total_length):
             x_fine.pop()
             x_fine[-1] = tl
             return x_fine
-
-
-def diff(x):
-    diff = []
-    for i in range(len(x) - 1):
-        diff.append(x[i + 1] - x[i])
-
-    return diff
 
 
 _KAPPA = 10
@@ -106,6 +100,8 @@ for i in range(len(l)):
 
         type_injected = temp
 
+        del temp
+
         j += 3
     else:
         j += 1
@@ -147,6 +143,11 @@ for i in range(len(segment_center_point)):
 
 x = fine(total_length)
 
-distance_step_vector = diff(x)
+distance_step_vector = numpy.diff(x)
+distance_step_vector = distance_step_vector.tolist()
 distance_step_vector.append(distance_step_vector[-1])
+number_of_mesh_points = len(x)
 
+
+r = scipy.interpolate.pchip_interpolate(x_coarse, r, x)
+print(r)
