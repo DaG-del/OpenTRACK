@@ -37,12 +37,11 @@ def fine(total_length):
     x_fine = []
     sum = 0
     while True:
-        sum += _mesh_size
         x_fine.append(sum)
-
-        if x_fine[-1] > tl:
+        sum += _mesh_size
+        if x_fine[-1] > math.floor(tl):
             x_fine.pop()
-            x_fine[-1] = tl
+            x_fine.append(total_length)
             return x_fine
 
 
@@ -175,14 +174,13 @@ distance_step_vector = distance_step_vector.tolist()
 distance_step_vector.append(distance_step_vector[-1])
 number_of_mesh_points = len(x)
 
-d = numpy.diff(x_coarse)
-
-i = 0
-for dee in d:
-    if dee == 0:
-        print(i)
-    i += 1
-
 
 r = scipy.interpolate.pchip_interpolate(x_coarse, r, x)
 r = r.tolist()
+
+f = open("r.csv", "r")
+r_MATLAB = f.readlines()
+r_matlab = []
+for ex in r_MATLAB:
+    r_matlab.append(float(ex.strip()))
+
