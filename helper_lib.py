@@ -1,3 +1,7 @@
+import math
+import numpy
+
+
 def compare_floats(a, b):
     a_rounded = []
     for ay in a:
@@ -28,3 +32,10 @@ def read_csv(filename):
         ret.append(float(i))
 
     return ret
+
+
+def rotz(angle, dsv, p):
+    x = dsv*math.cos(angle) + p[0]
+    y = dsv*math.sin(angle) + p[1]
+
+    return [x, y]

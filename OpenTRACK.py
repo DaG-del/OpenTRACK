@@ -204,7 +204,7 @@ dh.append(temp)
 temp = angle_heading[-1] - (360 * (abs(angle_heading[-1]) / angle_heading[-1]))
 dh.append(temp)
 
-dh = min_custom(dh)
+dh = min(dh)
 
 for ah in range(len(angle_heading)):
     angle_heading[ah] -= x[ah]/total_length*dh
@@ -213,10 +213,16 @@ angle_seg.clear()
 angle_seg.append(angle_heading[0])
 diff_as = numpy.diff(angle_heading)
 diff_as = list(diff_as.tolist())
+angle_seg.extend(diff_as)
+
 for ah in range(len(angle_heading)):
     angle_heading[ah] -= angle_heading[0]
 
-angle_heading_matlab = helper_lib.read_csv("ah.csv")
-angle_seg_matlab = helper_lib.read_csv("as.csv")
-helper_lib.compare_floats(angle_seg_matlab, angle_seg)
-helper_lib.compare_floats(angle_heading_matlab, angle_heading)
+for i in range(2, len(x)):
+    p = [X[i - 1], Y[i - 1]]
+
+    xyz = helper_lib.rotz(angle_heading[i - 1], distance_step_vector[i - 1], p)
+
+    X[i] = xyz[1]
+    Y[i] = xyz[2]
+
