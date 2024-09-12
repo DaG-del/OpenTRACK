@@ -1,7 +1,7 @@
 import scipy
 import math
 import numpy
-
+import helper_lib
 
 def center_points(l):
     sum = 0
@@ -199,7 +199,6 @@ angle_heading = list(angle_heading.tolist())
 
 dh = []
 
-#mod(angle_head(end),sign(angle_head(end))*360);
 temp = angle_heading[-1] % (360 * (abs(angle_heading[-1]) / angle_heading[-1]))
 dh.append(temp)
 temp = angle_heading[-1] - (360 * (abs(angle_heading[-1]) / angle_heading[-1]))
@@ -211,10 +210,13 @@ for ah in range(len(angle_heading)):
     angle_heading[ah] -= x[ah]/total_length*dh
 
 angle_seg.clear()
-angle_seg.append(temp[0])
+angle_seg.append(angle_heading[0])
 diff_as = numpy.diff(angle_heading)
 diff_as = list(diff_as.tolist())
 for ah in range(len(angle_heading)):
     angle_heading[ah] -= angle_heading[0]
 
-
+angle_heading_matlab = helper_lib.read_csv("ah.csv")
+angle_seg_matlab = helper_lib.read_csv("as.csv")
+helper_lib.compare_floats(angle_seg_matlab, angle_seg)
+helper_lib.compare_floats(angle_heading_matlab, angle_heading)
