@@ -215,14 +215,21 @@ diff_as = numpy.diff(angle_heading)
 diff_as = list(diff_as.tolist())
 angle_seg.extend(diff_as)
 
-for ah in range(len(angle_heading)):
-    angle_heading[ah] -= angle_heading[0]
+temp = angle_heading[0]
 
-for i in range(2, len(x)):
+for ah in range(len(angle_heading)):
+    angle_heading[ah] -= temp
+
+for i in range(1, len(x)):
     p = [X[i - 1], Y[i - 1]]
 
     xyz = helper_lib.rotz(angle_heading[i - 1], distance_step_vector[i - 1], p)
 
-    X[i] = xyz[1]
-    Y[i] = xyz[2]
+    X[i] = xyz[0]
+    Y[i] = xyz[1]
 
+X_matlab = helper_lib.read_csv("X.csv")
+Y_matlab = helper_lib.read_csv("Y.csv")
+
+helper_lib.compare_floats(X_matlab, X)
+helper_lib.compare_floats(Y_matlab, Y)

@@ -35,6 +35,7 @@ def read_csv(filename):
 
 
 def rotz(angle, dsv, p):
+    angle *= math.pi/180
     x = dsv*math.cos(angle) + p[0]
     y = dsv*math.sin(angle) + p[1]
 
