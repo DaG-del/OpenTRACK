@@ -45,6 +45,13 @@ def fine(total_length):
             return x_fine
 
 
+def min_custom(dh):
+    dh_abs = []
+    for d in dh:
+        dh_abs.append(abs(d))
+    return min(dh_abs)
+
+
 _KAPPA = 10
 _mesh_size = 0.1
 f = open("track.txt", "r")
@@ -178,9 +185,36 @@ number_of_mesh_points = len(x)
 r = scipy.interpolate.pchip_interpolate(x_coarse, r, x)
 r = r.tolist()
 
-f = open("r.csv", "r")
-r_MATLAB = f.readlines()
-r_matlab = []
-for ex in r_MATLAB:
-    r_matlab.append(float(ex.strip()))
+n = len(x)
+
+X = [0] * n
+Y = [0] * n
+
+angle_seg =[]
+for d in range(len(distance_step_vector)):
+    angle_seg.append((distance_step_vector[d]*r[d]) * (180/math.pi))
+
+angle_heading = numpy.cumsum(angle_seg)
+angle_heading = list(angle_heading.tolist())
+
+dh = []
+
+#mod(angle_head(end),sign(angle_head(end))*360);
+temp = angle_heading[-1] % (360 * (abs(angle_heading[-1]) / angle_heading[-1]))
+dh.append(temp)
+temp = angle_heading[-1] - (360 * (abs(angle_heading[-1]) / angle_heading[-1]))
+dh.append(temp)
+
+dh = min_custom(dh)
+
+for ah in range(len(angle_heading)):
+    angle_heading[ah] -= x[ah]/total_length*dh
+
+angle_seg.clear()
+angle_seg.append(temp[0])
+diff_as = numpy.diff(angle_heading)
+diff_as = list(diff_as.tolist())
+for ah in range(len(angle_heading)):
+    angle_heading[ah] -= angle_heading[0]
+
 
