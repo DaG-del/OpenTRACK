@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81ed5ddf-49cf-4477-bdf2-372757578234" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/X.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Y.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenTRACK.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTRACK.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helper_lib.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_lib.py" afterDir="false" />
@@ -270,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726232712853</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="update">
+      <option name="closed" value="true" />
+      <created>1726234523190</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1726234523190</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -278,5 +284,16 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper_lib.py</url>
+          <line>90</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

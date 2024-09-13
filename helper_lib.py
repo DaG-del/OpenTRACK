@@ -76,3 +76,17 @@ def calc_d(x, total_length, Y):
         ret.append(Y[el] + DX[el])
 
     return ret
+
+
+def writecsv(r_apex, distance_step_vector, n, r, x, X, Y, Z):
+    f = open("OpenTRACK_output.csv", "a")
+    d = {}
+    d["r_apex"] = r_apex
+    d["dx"] = distance_step_vector
+    d["n"] = n
+    d["r"] = r
+    d["x"] = x
+    d["X"] = X
+    d["Y"] = Y
+    d["Z"] = Z
+    f.write(str(d))

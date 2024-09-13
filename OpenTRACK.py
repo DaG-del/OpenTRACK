@@ -237,12 +237,7 @@ X = helper_lib.calc_d(x, total_length, X)
 Y = helper_lib.calc_d(x, total_length, Y)
 Z = [0] * len(X)
 
-X_matlab = helper_lib.read_csv("X.csv")
-helper_lib.compare_floats(X, X_matlab, 0.1)
-
-Y_matlab = helper_lib.read_csv("Y.csv")
-helper_lib.compare_floats(Y, Y_matlab, 0.1)
-
 mlt.plot(X, Y)
 mlt.show()
 
+helper_lib.writecsv(r_apex, distance_step_vector, n, r, x, X, Y, Z)
