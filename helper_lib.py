@@ -2,7 +2,7 @@ import math
 import numpy
 
 
-def compare_floats(a, b):
+def compare_floats(a, b, error):
     a_rounded = []
     for ay in a:
         a_rounded.append(round(ay, 2))
@@ -16,7 +16,7 @@ def compare_floats(a, b):
 
     errors = {}
     for x in range(len(a_rounded)):
-        if a_rounded[x] != b_rounded[x]:
+        if a_rounded[x] - b_rounded[x] > error:
             errors[x] = [a_rounded[x], b_rounded[x]]
 
     for e in errors:
@@ -53,4 +53,26 @@ def find(r_apex_indices, r):
     ret = []
     for aar in r_apex_indices:
         ret.append(r[aar])
+    return ret
+
+
+def calc_d(x, total_length, Y):
+    '''
+    % linear correction vectors
+    DX = x/L*(X(1)-X(end)) ;
+    DY = x/L*(Y(1)-Y(end)) ;
+    DZ = x/L*(Z(1)-Z(end)) ;
+    % adding correction
+    X = X+DX ;
+    Y = Y+DY ;
+    Z = Z+DZ ;
+    '''
+    ret = []
+    DX = []
+    for el in range(len(x)):
+        DX.append(x[el] / total_length * (Y[0] - Y[-1]))
+
+    for el in range(len(DX)):
+        ret.append(Y[el] + DX[el])
+
     return ret

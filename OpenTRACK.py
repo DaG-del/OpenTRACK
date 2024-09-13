@@ -2,7 +2,7 @@ import scipy
 import math
 import numpy
 import helper_lib
-
+import matplotlib.pyplot as mlt
 
 def center_points(l):
     sum = 0
@@ -233,6 +233,16 @@ r_apex_indices = r_apex_indices.tolist()
 
 r_apex = helper_lib.find(r_apex_indices, r)
 
-r_apex_matlab = helper_lib.read_csv("r_apex.csv")
-helper_lib.compare_floats(r_apex, r_apex_matlab)
+X = helper_lib.calc_d(x, total_length, X)
+Y = helper_lib.calc_d(x, total_length, Y)
+Z = [0] * len(X)
+
+X_matlab = helper_lib.read_csv("X.csv")
+helper_lib.compare_floats(X, X_matlab, 0.1)
+
+Y_matlab = helper_lib.read_csv("Y.csv")
+helper_lib.compare_floats(Y, Y_matlab, 0.1)
+
+mlt.plot(X, Y)
+mlt.show()
 
