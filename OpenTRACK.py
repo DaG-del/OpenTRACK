@@ -228,8 +228,3 @@ for i in range(1, len(x)):
     X[i] = xyz[0]
     Y[i] = xyz[1]
 
-X_matlab = helper_lib.read_csv("X.csv")
-Y_matlab = helper_lib.read_csv("Y.csv")
-
-helper_lib.compare_floats(X_matlab, X)
-helper_lib.compare_floats(Y_matlab, Y)
