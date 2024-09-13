@@ -40,3 +40,17 @@ def rotz(angle, dsv, p):
     y = dsv*math.sin(angle) + p[1]
 
     return [x, y]
+
+
+def absol(r: list):
+    r_abs = []
+    for aar in r:
+        r_abs.append(abs(aar))
+    return r_abs
+
+
+def find(r_apex_indices, r):
+    ret = []
+    for aar in r_apex_indices:
+        ret.append(r[aar])
+    return ret
